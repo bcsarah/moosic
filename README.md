@@ -1,6 +1,6 @@
 # Moosic
 - Trabalho de Javascript para o 4° Bimestre da disciplina de Programação Web 2
-- - Estamos fazendo Moosica (pfv ri)
+- Estamos fazendo Moosica (pfv ri)
 
 ## To-Do
 - [x] base do site
