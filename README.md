@@ -5,5 +5,6 @@
 ## To-Do
 - [x] base do site
 - [x] baixar músicas
-- [ ] adicionar capa
+- [x] adicionar capa
+- [ ] player como footer
 - [ ] página do artista
