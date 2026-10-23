@@ -1,42 +1,57 @@
-/* Configurações gerais */
+
+:root {
+    --cor-fundo: #111111;
+    --cor-superficie: #1d2021;
+    --cor-superficie-hover: #282828;
+    --cor-texto: #ebdbb2;
+    --cor-texto-secundario: #a89984;
+    --cor-destaque: #b8bb26;
+    --cor-destaque-hover: #98971a;
+    --cor-detalhe: #d79921;
+    --cor-borda: #504945;
+}
+
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    padding-bottom: 110px;
+    padding-bottom: 120px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #ebdbb2;
-    background-color: #111;
+    color: var(--cor-texto);
+    background-color: var(--cor-fundo);
 }
 
 /* Cabeçalho */
 .topo {
     position: sticky;
     top: 0;
-    z-index: 5;
-    height: 68px;
-    padding: 0 24px;
+    z-index: 1000;
     display: flex;
     align-items: center;
-    background-color: #080808;
-    border-bottom: 1px solid #282828;
+    padding: 15px 30px;
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
 }
 
 .marca {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #ebdbb2;
-    font-size: 1.4rem;
+    gap: 12px;
+    color: var(--cor-texto);
+    font-size: 28px;
     font-weight: bold;
     text-decoration: none;
 }
 
 .marca img {
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     object-fit: contain;
 }
 
@@ -44,160 +59,171 @@ body {
 .layout {
     display: grid;
     grid-template-columns: 210px minmax(0, 1fr);
-    gap: 16px;
-    padding: 16px;
-    align-items: start;
-}
-
-.menu,
-.conteudo {
-    background-color: #181818;
-    border-radius: 8px;
+    gap: 25px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 25px;
 }
 
 /* Menu lateral */
 .menu {
     position: sticky;
-    top: 84px;
-    min-height: calc(100vh - 100px);
-    padding: 20px 12px;
+    top: 90px;
+    align-self: start;
+    padding: 20px;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
 }
 
 .menu h2 {
-    margin: 0 8px 18px;
-    color: #d5c4a1;
-    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--cor-texto);
+    font-size: 20px;
 }
 
 .menu nav {
-    display: grid;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .botao-categoria {
-    padding: 11px 12px;
-    color: #a89984;
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--cor-texto-secundario);
+    font-size: 15px;
     text-align: left;
-    background: transparent;
-    border: 0;
-    border-radius: 5px;
     cursor: pointer;
-    font: inherit;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.botao-categoria:hover,
+.botao-categoria:hover {
+    background-color: var(--cor-superficie-hover);
+    color: var(--cor-texto);
+}
+
 .botao-categoria.ativo {
-    color: #ebdbb2;
-    background-color: #303030;
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    font-weight: bold;
 }
 
 .botao-categoria:focus-visible {
-    outline: 2px solid #d79921;
+    outline: 2px solid var(--cor-detalhe);
     outline-offset: 3px;
 }
 
-/* Conteúdo */
+/* Conteúdo principal */
 .conteudo {
-    min-height: calc(100vh - 100px);
-    padding: 24px;
+    min-width: 0;
 }
 
-.conteudo > h1 {
-    margin: 0 0 22px;
-    font-size: 1.8rem;
+.conteudo h1 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: var(--cor-texto);
+    font-size: 28px;
 }
 
 /* Catálogo de músicas */
 .catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
+/* Cards das músicas */
 .card {
     min-width: 0;
-    padding: 12px;
-    background-color: #222;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    transition: background-color 0.2s, border-color 0.2s;
+    overflow: hidden;
+    padding: 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background-color: var(--cor-superficie);
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .card:hover {
-    background-color: #303030;
-    border-color: #504945;
-}
-
-.card[hidden] {
-    display: none;
+    transform: translateY(-4px);
+    background-color: var(--cor-superficie-hover);
+    border-color: var(--cor-destaque);
 }
 
 .card img {
     display: block;
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
-.card h2 {
-    margin: 12px 0 3px;
-    color: #ebdbb2;
-    font-size: 1rem;
+.card h3 {
+    margin: 12px 0 6px;
+    overflow-wrap: anywhere;
+    color: var(--cor-texto);
+    font-size: 17px;
 }
 
 .card p {
     margin: 0 0 12px;
-    color: #a89984;
-    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+    color: var(--cor-texto-secundario);
+    font-size: 14px;
 }
 
-/* Botão de tocar música no catálogo */
+/* Botão de tocar dentro dos cards */
 .botao-tocar {
-    padding: 8px 16px;
-    color: #282828;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    font-size: 14px;
     font-weight: bold;
-    background-color: #b8bb26;
-    border: 0;
-    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .botao-tocar:hover {
-    background-color: #98971a;
-    transform: scale(1.03);
+    background-color: var(--cor-destaque-hover);
 }
 
 .botao-tocar:focus-visible {
-    outline: 2px solid #d79921;
+    outline: 2px solid var(--cor-detalhe);
     outline-offset: 3px;
 }
 
-/* Player fixo no rodapé */
+/* Player fixo na parte inferior */
 .player {
     position: fixed;
-    z-index: 10;
     right: 0;
     bottom: 0;
     left: 0;
-    width: 100%;
-    min-height: 90px;
-    padding: 12px 24px;
-
+    z-index: 1001;
     display: grid;
-    grid-template-columns: minmax(180px, 1fr) minmax(200px, 2fr) 48px;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 2fr) auto;
     align-items: center;
-    gap: 24px;
-
-    color: #ebdbb2;
-    background-color: #1d2021;
-    border-top: 1px solid #504945;
-    border-radius: 0;
+    gap: 25px;
+    min-height: 100px;
+    padding: 15px 25px;
+    border-top: 1px solid var(--cor-borda);
+    background-color: var(--cor-superficie);
+    box-shadow: 0 -5px 20px rgb(0 0 0 / 25%);
 }
 
-/* Imagem e informações da música */
+/* Informações da faixa atual */
 .track-info {
     display: flex;
     align-items: center;
@@ -205,123 +231,224 @@ body {
     min-width: 0;
 }
 
-.track-info img {
-    width: 56px;
-    height: 56px;
+#player-imagem {
+    width: 60px;
+    height: 60px;
     flex-shrink: 0;
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
     object-fit: cover;
-    border-radius: 4px;
 }
 
-.track-texto {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    min-width: 0;
-}
-
-.track-texto strong,
-.track-texto span {
+.track-info strong {
+    display: block;
     overflow: hidden;
+    color: var(--cor-texto);
+    font-size: 15px;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.track-texto strong {
-    font-size: 0.95rem;
+#artist-name {
+    display: block;
+    margin-top: 5px;
+    overflow: hidden;
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.track-texto span {
-    color: #a89984;
-    font-size: 0.85rem;
-}
-
-/* Barra de progresso e tempos */
+/* Barra de progresso */
 .progresso-container {
     display: flex;
     align-items: center;
-    justify-self: stretch;
     gap: 10px;
-    width: 100%;
     min-width: 0;
-    color: #a89984;
-    font-size: 0.75rem;
-    font-variant-numeric: tabular-nums;
 }
 
 #tempo-atual,
 #duracao-total {
     flex-shrink: 0;
+    color: var(--cor-texto-secundario);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
 }
 
 #barra-progresso {
-    flex: 1;
+    width: 100%;
     min-width: 0;
-    height: 5px;
-    margin: 0;
+    height: 6px;
+    border-radius: 10px;
+    background-color: var(--cor-borda);
+    accent-color: var(--cor-destaque);
     cursor: pointer;
-    accent-color: #b8bb26;
 }
 
-#barra-progresso:focus-visible {
-    outline: 2px solid #d79921;
-    outline-offset: 4px;
-}
-
-/* Controles do player à direita */
+/* Controles do player */
 .player-controles {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 12px;
 }
 
 #play-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
-    padding: 0;
+    width: 46px;
+    height: 46px;
     border: none;
     border-radius: 50%;
-    color: #282828;
-    background-color: #b8bb26;
-    font-size: 1rem;
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    font-size: 20px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 #play-button:hover {
-    background-color: #98971a;
-    transform: scale(1.05);
+    transform: scale(1.06);
+    background-color: var(--cor-destaque-hover);
 }
 
 #play-button:focus-visible {
-    outline: 2px solid #ebdbb2;
-    outline-offset: 3px;
+    outline: 2px solid var(--cor-detalhe);
+    outline-offset: 4px;
 }
 
-/* Telas médias */
-@media (max-width: 800px) {
+/* O áudio é controlado pelo JavaScript */
+.player audio {
+    display: none;
+}
+
+/* Ajustes para telas médias */
+@media (max-width: 900px) {
     .layout {
         grid-template-columns: 170px minmax(0, 1fr);
-        gap: 12px;
-        padding: 12px;
-    }
-
-    .conteudo {
+        gap: 18px;
         padding: 18px;
     }
 
+    .menu {
+        padding: 15px;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+    }
+
     .player {
-        grid-template-columns: minmax(0, 1fr) 42px;
-        gap: 10px 16px;
-        padding: 10px 16px;
+        grid-template-columns: minmax(150px, 1fr) minmax(160px, 1.5fr) auto;
+        gap: 15px;
+        padding: 12px 18px;
+    }
+
+    #player-imagem {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+    body {
+        padding-bottom: 125px;
+    }
+
+    .topo {
+        padding: 12px 16px;
+    }
+
+    .marca {
+        font-size: 24px;
+    }
+
+    .marca img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 16px;
+    }
+
+    .menu {
+        position: static;
+        padding: 15px;
+    }
+
+    .menu h2 {
+        margin-bottom: 12px;
+    }
+
+    .menu nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .botao-categoria {
+        width: auto;
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .conteudo h1 {
+        margin-bottom: 18px;
+        font-size: 23px;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card h3 {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 12px;
+    }
+
+    .botao-tocar {
+        padding: 9px 8px;
+        font-size: 12px;
+    }
+
+    .player {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px 12px;
+        min-height: 0;
+        padding: 10px 14px;
     }
 
     .track-info {
-        grid-column: 1;
-        grid-row: 1;
+        gap: 9px;
+    }
+
+    #player-imagem {
+        width: 44px;
+        height: 44px;
+    }
+
+    .track-info strong {
+        font-size: 13px;
+    }
+
+    #artist-name {
+        font-size: 11px;
     }
 
     .player-controles {
@@ -329,117 +456,27 @@ body {
         grid-row: 1;
     }
 
+    #play-button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
     .progresso-container {
         grid-column: 1 / -1;
         grid-row: 2;
-    }
-
-    .track-info img {
-        width: 48px;
-        height: 48px;
-    }
-
-    body {
-        padding-bottom: 125px;
+        gap: 8px;
     }
 }
 
-/* Celulares */
-@media (max-width: 600px) {
-    .topo {
-        height: 60px;
-        padding: 0 16px;
-    }
-
-    .marca {
-        font-size: 1.2rem;
-    }
-
-    .marca img {
-        width: 34px;
-        height: 34px;
-    }
-
-    .layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .menu {
-        position: static;
-        min-height: auto;
-        padding: 12px;
-    }
-
-    .menu h2 {
-        margin-bottom: 10px;
-    }
-
-    .menu nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    .botao-categoria {
-        padding: 8px 10px;
-    }
-
-    .conteudo {
-        min-height: auto;
-        padding: 16px;
-    }
-
-    .conteudo > h1 {
-        font-size: 1.4rem;
-    }
-
+/* Celulares muito estreitos */
+@media (max-width: 350px) {
     .catalogo {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .card {
-        padding: 8px;
-    }
-
-    .card h2 {
-        font-size: 0.9rem;
-    }
-
-    .card p {
-        font-size: 0.8rem;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .player {
-        gap: 8px 12px;
-        padding: 10px 12px;
-    }
-
-    .track-info {
-        gap: 8px;
-    }
-
-    .track-info img {
-        width: 42px;
-        height: 42px;
-    }
-
-    .track-texto strong {
-        font-size: 0.85rem;
-    }
-
-    .track-texto span {
-        font-size: 0.75rem;
-    }
-
-    #play-button {
-        width: 38px;
-        height: 38px;
-    }
-
-    .progresso-container {
-        gap: 8px;
+        padding-right: 10px;
+        padding-left: 10px;
     }
 }
