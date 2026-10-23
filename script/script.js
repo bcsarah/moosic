@@ -17,7 +17,8 @@ const nomesCategorias = {
     rock: "Rock",
     metal: "Metal",
     pop: "Pop",
-    eletronica: "Eletrônica"
+    eletronica: "Eletrônica",
+    indie: "Indie"
 };
 
 // Cria os elementos de cada card usando os atributos data-*.
