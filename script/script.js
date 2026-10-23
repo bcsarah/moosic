@@ -76,3 +76,32 @@ catalogo.addEventListener("click", (evento) => {
         console.error("Erro ao reproduzir a música:", erro);
     });
 });
+
+// Player no footer
+const playButton = document.querySelector("#play-button");
+
+playButton.addEventListener("click", async () => {
+    if (playerAudio.paused) {
+        try {
+            await playerAudio.play();
+            playButton.textContent = "⏸";
+        } catch (erro) {
+            console.error("Erro ao reproduzir a música:", erro);
+        }
+    } else {
+        playerAudio.pause();
+        playButton.textContent = "▶";
+    }
+});
+
+playerAudio.addEventListener("play", () => {
+    playButton.textContent = "⏸";
+});
+
+playerAudio.addEventListener("pause", () => {
+    playButton.textContent = "▶";
+});
+
+playerAudio.addEventListener("ended", () => {
+    playButton.textContent = "▶";
+});
