@@ -1,11 +1,13 @@
+/* Configurações gerais */
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
+    padding-bottom: 110px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
+    color: #ebdbb2;
     background-color: #111;
 }
 
@@ -13,7 +15,7 @@ body {
 .topo {
     position: sticky;
     top: 0;
-    z-index: 2;
+    z-index: 5;
     height: 68px;
     padding: 0 24px;
     display: flex;
@@ -26,7 +28,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #fff;
+    color: #ebdbb2;
     font-size: 1.4rem;
     font-weight: bold;
     text-decoration: none;
@@ -38,22 +40,22 @@ body {
     object-fit: contain;
 }
 
-/* Layout com menu, catálogo e player */
+/* Layout principal */
 .layout {
     display: grid;
-    grid-template-columns: 210px minmax(0, 1fr) 280px;
+    grid-template-columns: 210px minmax(0, 1fr);
     gap: 16px;
     padding: 16px;
     align-items: start;
 }
 
 .menu,
-.conteudo,
-.player {
+.conteudo {
     background-color: #181818;
     border-radius: 8px;
 }
 
+/* Menu lateral */
 .menu {
     position: sticky;
     top: 84px;
@@ -61,9 +63,9 @@ body {
     padding: 20px 12px;
 }
 
-.menu h2,
-.player h2 {
+.menu h2 {
     margin: 0 8px 18px;
+    color: #d5c4a1;
     font-size: 1.1rem;
 }
 
@@ -74,21 +76,28 @@ body {
 
 .botao-categoria {
     padding: 11px 12px;
-    color: #ccc;
+    color: #a89984;
     text-align: left;
     background: transparent;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
     font: inherit;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .botao-categoria:hover,
 .botao-categoria.ativo {
-    color: #fff;
+    color: #ebdbb2;
     background-color: #303030;
 }
 
+.botao-categoria:focus-visible {
+    outline: 2px solid #d79921;
+    outline-offset: 3px;
+}
+
+/* Conteúdo */
 .conteudo {
     min-height: calc(100vh - 100px);
     padding: 24px;
@@ -99,6 +108,7 @@ body {
     font-size: 1.8rem;
 }
 
+/* Catálogo de músicas */
 .catalogo {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -106,14 +116,17 @@ body {
 }
 
 .card {
+    min-width: 0;
     padding: 12px;
     background-color: #222;
+    border: 1px solid transparent;
     border-radius: 8px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .card:hover {
     background-color: #303030;
+    border-color: #504945;
 }
 
 .card[hidden] {
@@ -130,63 +143,303 @@ body {
 
 .card h2 {
     margin: 12px 0 3px;
+    color: #ebdbb2;
     font-size: 1rem;
 }
 
 .card p {
     margin: 0 0 12px;
-    color: #aaa;
+    color: #a89984;
     font-size: 0.9rem;
 }
 
+/* Botão de tocar música no catálogo */
 .botao-tocar {
     padding: 8px 16px;
-    color: #111;
+    color: #282828;
     font-weight: bold;
-    background-color: #1ed760;
+    background-color: #b8bb26;
     border: 0;
     border-radius: 20px;
     cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .botao-tocar:hover {
-    background-color: #3be477;
+    background-color: #98971a;
+    transform: scale(1.03);
 }
 
+.botao-tocar:focus-visible {
+    outline: 2px solid #d79921;
+    outline-offset: 3px;
+}
 
-/* player */
+/* Player fixo no rodapé */
 .player {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  background: #282828;
-  color: #ebdbb2;
-  border-top: 1px solid #504945;
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 90px;
+    padding: 12px 24px;
+
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(200px, 2fr) 48px;
+    align-items: center;
+    gap: 24px;
+
+    color: #ebdbb2;
+    background-color: #1d2021;
+    border-top: 1px solid #504945;
+    border-radius: 0;
 }
 
+/* Imagem e informações da música */
 .track-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
 }
 
-.track-info span {
-  color: #a89984;
-  font-size: 0.85rem;
+.track-info img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
-.player button {
-  background: #b8bb26;
-  color: #282828;
-  border: none;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
+.track-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.track-texto strong,
+.track-texto span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-texto strong {
+    font-size: 0.95rem;
+}
+
+.track-texto span {
+    color: #a89984;
+    font-size: 0.85rem;
+}
+
+/* Barra de progresso e tempos */
+.progresso-container {
+    display: flex;
+    align-items: center;
+    justify-self: stretch;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    color: #a89984;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+}
+
+#tempo-atual,
+#duracao-total {
+    flex-shrink: 0;
+}
+
+#barra-progresso {
+    flex: 1;
+    min-width: 0;
+    height: 5px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #b8bb26;
+}
+
+#barra-progresso:focus-visible {
+    outline: 2px solid #d79921;
+    outline-offset: 4px;
+}
+
+/* Controles do player à direita */
+.player-controles {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    color: #282828;
+    background-color: #b8bb26;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#play-button:hover {
+    background-color: #98971a;
+    transform: scale(1.05);
+}
+
+#play-button:focus-visible {
+    outline: 2px solid #ebdbb2;
+    outline-offset: 3px;
+}
+
+/* Telas médias */
+@media (max-width: 800px) {
+    .layout {
+        grid-template-columns: 170px minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .conteudo {
+        padding: 18px;
+    }
+
+    .player {
+        grid-template-columns: minmax(0, 1fr) 42px;
+        gap: 10px 16px;
+        padding: 10px 16px;
+    }
+
+    .track-info {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .player-controles {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .progresso-container {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .track-info img {
+        width: 48px;
+        height: 48px;
+    }
+
+    body {
+        padding-bottom: 125px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .topo {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .marca {
+        font-size: 1.2rem;
+    }
+
+    .marca img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .menu {
+        position: static;
+        min-height: auto;
+        padding: 12px;
+    }
+
+    .menu h2 {
+        margin-bottom: 10px;
+    }
+
+    .menu nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .botao-categoria {
+        padding: 8px 10px;
+    }
+
+    .conteudo {
+        min-height: auto;
+        padding: 16px;
+    }
+
+    .conteudo > h1 {
+        font-size: 1.4rem;
+    }
+
+    .catalogo {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .card {
+        padding: 8px;
+    }
+
+    .card h2 {
+        font-size: 0.9rem;
+    }
+
+    .card p {
+        font-size: 0.8rem;
+    }
+
+    .player {
+        gap: 8px 12px;
+        padding: 10px 12px;
+    }
+
+    .track-info {
+        gap: 8px;
+    }
+
+    .track-info img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .track-texto strong {
+        font-size: 0.85rem;
+    }
+
+    .track-texto span {
+        font-size: 0.75rem;
+    }
+
+    #play-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .progresso-container {
+        gap: 8px;
+    }
 }

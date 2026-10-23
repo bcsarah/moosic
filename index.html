@@ -149,17 +149,52 @@
             </div>
         </main>
 
-        <footer class="player">
-            <div class="track-info">
-                <strong id="track-name">Minha música</strong>
-                <span id="artist-name">Artista</span>
-            </div>
-
-            <button id="play-button">▶</button>
-
-            <audio id="audio" src="/musicas/exemplo.mp3"></audio>
-        </footer>
     </div>
+
+    <footer class="player">
+        <!-- Informações da música -->
+        <div class="track-info">
+            <img
+                id="player-imagem"
+                src="images/moosic.png"
+                alt="Capa do álbum"
+            >
+
+            <div class="track-texto">
+                <strong id="track-name">Nenhuma música selecionada</strong>
+                <span id="artist-name">Escolha uma música da biblioteca</span>
+            </div>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div class="progresso-container">
+            <span id="tempo-atual">0:00</span>
+
+            <input
+                type="range"
+                id="barra-progresso"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Progresso da música"
+            >
+
+            <span id="duracao-total">0:00</span>
+        </div>
+
+        <!-- Botão de reprodução -->
+        <div class="player-controles">
+            <button
+                id="play-button"
+                type="button"
+                aria-label="Reproduzir"
+            >▶</button>
+        </div>
+
+        <!-- Áudio -->
+        <audio id="audio" preload="metadata"></audio>
+    </footer>
 
     <!-- JS Externo -->
     <script src="script/script.js"></script>
