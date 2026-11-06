@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moosic</title>
+
     <link rel="stylesheet" href="style/style.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+
 </head>
 
 <body>
     <!-- HEADER -->
     <header class="topo">
         <a class="marca" href="#">
-            <!-- Troque este caminho pela imagem/logo do projeto -->
             <img src="images/moosic.png" alt="Logo Moosic">
             <span>Moosic</span>
         </a>
@@ -27,6 +37,7 @@
                 <button class="botao-categoria" data-categoria="metal">Metal</button>
                 <button class="botao-categoria" data-categoria="pop">Pop</button>
                 <button class="botao-categoria" data-categoria="eletronica">Eletrônica</button>
+                <button class="botao-categoria" data-categoria="indie">Indie</button>           
             </nav>
         </aside>
 
@@ -48,7 +59,7 @@
                 <article class="card" 
                     data-categoria="rock"
                     data-titulo="Brain Damage"
-                    data-artista="Pink Floud"
+                    data-artista="Pink Floyd"
                     data-album="The Dark Side of the Moon"
                     data-imagem="https://yt3.googleusercontent.com/lfiVQfNhs8F77ZOE_OyAftPDGXNY8WfkIVg67gNVxaJHLef7QIXsm7CAcaT4o3AyyLTaQeqWguKel0g=w544-h544-l90-rj"
                     data-audio="music/brain-damage.mp3">
@@ -62,6 +73,7 @@
                     data-imagem="https://yt3.googleusercontent.com/k1P0nFYMJ4yLC3yUumEY021eI7zDr67r2DWOVvUVFowraXukUHHhf4TUOfVgGtnKx6YlJpnpEaskcmLE=w544-h544-l90-rj"
                     data-audio="music/wish-you-were-here.mp3">
                 </article>
+
 
                 <!-- METAL -->
                 <article class="card" 
@@ -91,9 +103,10 @@
                     data-audio="music/eyeless.mp3">
                 </article>
 
+
                 <!-- POP -->
                 <article class="card"
-                    data-categoria="pop"
+                    data-categoria="indie"
                     data-titulo="Memórias"
                     data-artista="Yung Lixo"
                     data-album="13 Lentes de um Final Feliz"
@@ -102,7 +115,7 @@
                 </article>
 
                 <article class="card"
-                    data-categoria="pop"
+                    data-categoria="indie"
                     data-titulo="Polaroid"
                     data-artista="Yung Lixo"
                     data-album="Polaroid"
@@ -111,13 +124,14 @@
                 </article>
 
                 <article class="card"
-                    data-categoria="pop"
+                    data-categoria="indie"
                     data-titulo="Blue Hair"
                     data-artista="TV Girl"
                     data-album="Death of a Party Girl"
                     data-imagem="https://yt3.googleusercontent.com/fPdVeGe4CpIMpcTMhZPdQtjV6x6XM4OHdgHrGZHGi4KZRnWXkDFqb51buqG9KdI1Ek4V2MTe5stZxCg=w544-h544-l90-rj"
                     data-audio="music/blue-hair.mp3">
                 </article>
+
 
                 <!-- ELETRÔNICA -->
                 <article class="card"
@@ -146,18 +160,81 @@
                     data-imagem="https://yt3.googleusercontent.com/78psDhXDFSP_AcoSLLgSB0584g-9VdHPi9G_ouUmUkoQXRzkDTYWi5M4LED8-2z3MZnOsDXqQwutUq0=w544-h544-l90-rj"
                     data-audio="music/toujours.mp3">
                 </article>
+
+
+                <!-- POP -->
+                <article class="card"
+                data-categoria="pop"
+                data-titulo="Ain't in LA"
+                data-artista="ADÉLA"
+                data-album="PRIMA"
+                data-imagem="https://yt3.googleusercontent.com/mHa1sg5pmlgudnTZ_XOcJ-0VAKuFDodEstxurIF2C6RttpfyyeaqC75FmPQjlc2BQQ5JfvGaFuU69dhs=w544-h544-l90-rj">
+                </article>
+
+                <article class="card"
+                data-categoria="pop"
+                data-titulo="Fame is a Gun"
+                data-artista="Addison Rae"
+                data-album="Addison"
+                data-imagem="https://yt3.googleusercontent.com/R_BB-zHdMe_yOCuFYqvEKkVv5LCOUiihXrdfl4E41kM79iJcXxlRSTAFGyEk7RuZTX2ZvCysya8Im_1uTA=w544-h544-l90-rj">
+                </article>
+
+                <article class="card"
+                data-categoria="pop"
+                data-titulo="The Less i Know the Better"
+                data-artista="Tame Impala"
+                data-album="Currents"
+                data-imagem="https://yt3.googleusercontent.com/J67cuSWAzGMlj8d9orcAZjPHsl8RWcXIXkT1d8mGmx9jmXPvXkYpFzuLnucmaqJwVMqxPlSq1GbqPeQy=w544-h544-l90-rj">
+                </article>
             </div>
         </main>
 
-        <aside class="player">
-            <h2>Player</h2>
-            <img id="player-imagem" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fas1.ftcdn.net%2Fv2%2Fjpg%2F01%2F21%2F31%2F78%2F1000_F_121317810_QjR56vEQrxQRlFBI08BDl9CeaFfKfV5w.jpg&f=1&nofb=1&ipt=93b62e30b6d9fe34618a17059ea767d5cd6dd05869676a72d3273fb42405c901&ipo=images" alt="Capa da música selecionada">
-            <h3 id="player-titulo">Nenhuma música selecionada</h3>
-            <p id="player-artista">Escolha uma música para começar</p>
-            <audio id="player-audio" controls>
-            </audio>
-        </aside>
     </div>
+
+    <footer class="player">
+        <!-- Informações da música -->
+        <div class="track-info">
+            <img
+                id="player-imagem"
+                src="images/moosic.png"
+                alt="Capa do álbum"
+            >
+
+            <div class="track-texto">
+                <strong id="track-name">Nenhuma música selecionada</strong>
+                <span id="artist-name">Escolha uma música da biblioteca</span>
+            </div>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div class="progresso-container">
+            <span id="tempo-atual">0:00</span>
+
+            <input
+                type="range"
+                id="barra-progresso"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label="Progresso da música"
+            >
+
+            <span id="duracao-total">0:00</span>
+        </div>
+
+        <!-- Botão de reprodução -->
+        <div class="player-controles">
+            <button
+                id="play-button"
+                type="button"
+                aria-label="Reproduzir"
+            >▶</button>
+        </div>
+
+        <!-- Áudio -->
+        <audio id="audio" preload="metadata"></audio>
+    </footer>
 
     <!-- JS Externo -->
     <script src="script/script.js"></script>

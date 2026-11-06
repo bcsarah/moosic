@@ -1,226 +1,363 @@
+
+/* CORES DO SITE */
+:root {
+    --fundo: #292425;
+    --rosa: #a96c70;
+    --rosa-claro: #d58b8e;
+    --rosa-hover: #c77c80;
+    --marrom: #211e1f;
+    --card: #493638;
+    --branco: #fff5f2;
+    --borda: #594346;
+}
+
+/* CONFIGURAÇÕES GERAIS */
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    background-color: #111;
+    padding-top: 85px;
+    padding-bottom: 120px;
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    color: var(--branco);
+    background-color: var(--fundo);
 }
 
-/* Cabeçalho */
+/* CABEÇALHO FIXO */
 .topo {
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 2;
-    height: 68px;
-    padding: 0 24px;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    z-index: 1000;
+
     display: flex;
     align-items: center;
-    background-color: #080808;
-    border-bottom: 1px solid #282828;
+
+    padding: 10px 30px;
+
+    background-color: var(--rosa);
+    border-bottom: 1px solid var(--borda);
 }
 
 .marca {
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: #fff;
-    font-size: 1.4rem;
+    gap: 12px;
+
+    color: var(--branco);
+    font-size: 26px;
     font-weight: bold;
     text-decoration: none;
 }
 
 .marca img {
-    width: 38px;
-    height: 38px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
 }
 
-/* Layout com menu, catálogo e player */
+/* CONTEÚDO PRINCIPAL */
 .layout {
-    display: grid;
-    grid-template-columns: 210px minmax(0, 1fr) 280px;
-    gap: 16px;
-    padding: 16px;
-    align-items: start;
+    margin-left: 260px;
+    padding: 25px;
 }
 
-.menu,
-.conteudo,
-.player {
-    background-color: #181818;
-    border-radius: 8px;
+.conteudo h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--branco);
 }
 
+/* MENU LATERAL */
 .menu {
-    position: sticky;
-    top: 84px;
-    min-height: calc(100vh - 100px);
-    padding: 20px 12px;
+    position: fixed;
+    top: 105px;
+    left: 20px;
+    bottom: 120px;
+
+    width: 220px;
+    padding: 20px;
+
+    background-color: var(--marrom);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
 }
 
-.menu h2,
-.player h2 {
-    margin: 0 8px 18px;
-    font-size: 1.1rem;
+.menu h2 {
+    font-size: 19px;
+    margin-top: 0;
+    color: var(--rosa-claro);
 }
 
 .menu nav {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 8px;
 }
 
 .botao-categoria {
-    padding: 11px 12px;
-    color: #ccc;
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: transparent;
+    color: var(--branco);
+
+    font-family: inherit;
+    font-size: 14px;
     text-align: left;
-    background: transparent;
-    border: 0;
-    border-radius: 5px;
+
     cursor: pointer;
-    font: inherit;
 }
 
-.botao-categoria:hover,
+.botao-categoria:hover {
+    background-color: var(--card);
+}
+
 .botao-categoria.ativo {
-    color: #fff;
-    background-color: #303030;
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
+    font-weight: bold;
 }
 
-.conteudo {
-    min-height: calc(100vh - 100px);
-    padding: 24px;
-}
-
-.conteudo > h1 {
-    margin: 0 0 22px;
-    font-size: 1.8rem;
-}
-
+/* CATÁLOGO DE MÚSICAS */
 .catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
+/* CARDS */
 .card {
-    padding: 12px;
-    background-color: #222;
-    border-radius: 8px;
-    transition: background-color 0.2s;
+    padding: 15px;
+    background-color: var(--card);
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
 }
 
 .card:hover {
-    background-color: #303030;
-}
-
-.card[hidden] {
-    display: none;
+    background-color: #624346;
+    transform: translateY(-4px);
 }
 
 .card img {
-    display: block;
     width: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
-.card h2 {
-    margin: 12px 0 3px;
-    font-size: 1rem;
+.card h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
 }
 
 .card p {
-    margin: 0 0 12px;
-    color: #aaa;
-    font-size: 0.9rem;
+    font-size: 14px;
+    color: var(--branco);
 }
 
+/* BOTÃO DE TOCAR */
 .botao-tocar {
-    padding: 8px 16px;
-    color: #111;
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
+
+    font-family: inherit;
     font-weight: bold;
-    background-color: #1ed760;
-    border: 0;
-    border-radius: 20px;
+
     cursor: pointer;
 }
 
 .botao-tocar:hover {
-    background-color: #3be477;
+    background-color: var(--rosa-hover);
 }
 
-/* Player */
+/* PLAYER DE MÚSICA */
 .player {
-    position: sticky;
-    top: 84px;
-    padding: 20px;
-}
-
-.player > img {
-    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    aspect-ratio: 1;
+    min-height: 100px;
+    z-index: 1001;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    align-items: center;
+    gap: 20px;
+
+    padding: 15px 25px;
+
+    background-color: #35292b;
+    border-top: 1px solid var(--borda);
+}
+
+/* INFORMAÇÕES DA MÚSICA */
+.track-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+#player-imagem {
+    width: 55px;
+    height: 55px;
+    border-radius: 8px;
     object-fit: cover;
-    border-radius: 6px;
 }
 
-.player h3 {
-    margin: 16px 0 4px;
+.track-info strong,
+#artist-name {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-.player p {
-    margin: 0 0 16px;
-    color: #aaa;
+#artist-name {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+/* PROGRESSO DA MÚSICA */
+.progresso-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#barra-progresso {
+    width: 100%;
+    accent-color: var(--rosa-claro);
+    cursor: pointer;
+}
+
+/* CONTROLES */
+.player-controles {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#play-button {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
+
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#play-button:hover {
+    background-color: var(--rosa-hover);
 }
 
 .player audio {
-    width: 100%;
+    display: none;
 }
 
-/* Telas menores */
+/* TABLETS E TELAS MENORES */
 @media (max-width: 900px) {
     .layout {
-        grid-template-columns: 170px minmax(0, 1fr);
+        margin-left: 210px;
+    }
+
+    .menu {
+        width: 180px;
     }
 
     .player {
-        position: static;
-        grid-column: 2;
+        gap: 10px;
     }
 }
 
+/* CELULARES */
 @media (max-width: 600px) {
+    body {
+        padding-top: 70px;
+        padding-bottom: 120px;
+    }
+
+    .topo {
+        height: 70px;
+        padding: 8px 15px;
+    }
+
+    .marca {
+        font-size: 22px;
+    }
+
+    .marca img {
+        width: 45px;
+        height: 45px;
+    }
+
     .layout {
-        grid-template-columns: 1fr;
-        padding: 10px;
+        margin-left: 0;
+        padding: 15px;
     }
 
     .menu {
         position: static;
-        min-height: auto;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .menu nav {
-        display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
     }
 
     .botao-categoria {
-        text-align: center;
-    }
-
-    .conteudo,
-    .player {
-        grid-column: 1;
-        padding: 16px;
+        width: auto;
     }
 
     .catalogo {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+
+    .player {
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .track-info {
+        gap: 8px;
+    }
+
+    #player-imagem {
+        width: 42px;
+        height: 42px;
+    }
+
+    .player-controles {
+        grid-column: 2;
+    }
+
+    .progresso-container {
+        grid-column: 1 / 3;
     }
 }
