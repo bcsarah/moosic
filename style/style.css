@@ -1,16 +1,17 @@
 
+/* CORES DO SITE */
 :root {
-    --cor-fundo: #969595;
-    --cor-superficie: #111111;
-    --cor-superficie-hover: #282828;
-    --cor-texto: #ebdbb2;
-    --cor-texto-secundario: #a89984;
-    --cor-destaque: #b8bb26;
-    --cor-destaque-hover: #98971a;
-    --cor-detalhe: #0e0d0d;
-    --cor-borda: #504945;
+    --fundo: #292425;
+    --rosa: #a96c70;
+    --rosa-claro: #d58b8e;
+    --rosa-hover: #c77c80;
+    --marrom: #211e1f;
+    --card: #493638;
+    --branco: #fff5f2;
+    --borda: #594346;
 }
 
+/* CONFIGURAÇÕES GERAIS */
 * {
     box-sizing: border-box;
 }
@@ -21,147 +22,138 @@ html {
 
 body {
     margin: 0;
+    padding-top: 85px;
     padding-bottom: 120px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--cor-texto);
-    background-color: var(--cor-fundo);
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    color: var(--branco);
+    background-color: var(--fundo);
 }
 
-/* Cabeçalho */
+/* CABEÇALHO FIXO */
 .topo {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
     z-index: 1000;
+
     display: flex;
     align-items: center;
-    padding: 15px 30px;
-    background-color: var(--cor-superficie);
-    border-bottom: 1px solid var(--cor-borda);
+
+    padding: 10px 30px;
+
+    background-color: var(--rosa);
+    border-bottom: 1px solid var(--borda);
 }
 
 .marca {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: var(--cor-texto);
-    font-size: 28px;
+
+    color: var(--branco);
+    font-size: 26px;
     font-weight: bold;
     text-decoration: none;
 }
 
 .marca img {
-    width: 42px;
-    height: 42px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
 }
 
-/* Layout principal */
+/* CONTEÚDO PRINCIPAL */
 .layout {
-    display: grid;
-    grid-template-columns: 210px minmax(0, 1fr);
-    gap: 25px;
-    max-width: 1600px;
-    margin: 0 auto;
+    margin-left: 260px;
     padding: 25px;
 }
 
-/* Menu lateral */
+.conteudo h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--branco);
+}
+
+/* MENU LATERAL */
 .menu {
-    position: sticky;
-    top: 90px;
-    align-self: start;
+    position: fixed;
+    top: 105px;
+    left: 20px;
+    bottom: 120px;
+
+    width: 220px;
     padding: 20px;
-    background-color: var(--cor-superficie);
-    border: 1px solid var(--cor-borda);
+
+    background-color: var(--marrom);
+    border: 1px solid var(--borda);
     border-radius: 12px;
 }
 
 .menu h2 {
+    font-size: 19px;
     margin-top: 0;
-    margin-bottom: 20px;
-    color: var(--cor-texto);
-    font-size: 20px;
+    color: var(--rosa-claro);
 }
 
 .menu nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .botao-categoria {
     width: 100%;
-    padding: 12px 14px;
-    border: 1px solid transparent;
+    padding: 12px;
+
+    border: none;
     border-radius: 8px;
+
     background-color: transparent;
-    color: var(--cor-texto-secundario);
-    font-size: 15px;
+    color: var(--branco);
+
+    font-family: inherit;
+    font-size: 14px;
     text-align: left;
+
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
 }
 
 .botao-categoria:hover {
-    background-color: var(--cor-superficie-hover);
-    color: var(--cor-texto);
+    background-color: var(--card);
 }
 
 .botao-categoria.ativo {
-    background-color: var(--cor-destaque);
-    color: var(--cor-fundo);
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
     font-weight: bold;
 }
 
-.botao-categoria:focus-visible {
-    outline: 2px solid var(--cor-detalhe);
-    outline-offset: 3px;
-}
-
-/* Conteúdo principal */
-.conteudo {
-    min-width: 0;
-}
-
-.conteudo h1 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: var(--cor-texto);
-    font-size: 28px;
-}
-
-/* Catálogo de músicas */
+/* CATÁLOGO DE MÚSICAS */
 .catalogo {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
 }
 
-/* Cards das músicas */
+/* CARDS */
 .card {
-    min-width: 0;
-    overflow: hidden;
     padding: 15px;
-    border: 1px solid var(--cor-borda);
+    background-color: var(--card);
+
+    border: 1px solid var(--borda);
     border-radius: 12px;
-    background-color: var(--cor-superficie);
-    transition:
-        transform 0.2s ease,
-        background-color 0.2s ease,
-        border-color 0.2s ease;
 }
 
 .card:hover {
+    background-color: #624346;
     transform: translateY(-4px);
-    background-color: var(--cor-superficie-hover);
-    border-color: var(--cor-destaque);
 }
 
 .card img {
-    display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -169,61 +161,58 @@ body {
 }
 
 .card h3 {
-    margin: 12px 0 6px;
-    overflow-wrap: anywhere;
-    color: var(--cor-texto);
     font-size: 17px;
+    margin-bottom: 6px;
 }
 
 .card p {
-    margin: 0 0 12px;
-    overflow-wrap: anywhere;
-    color: var(--cor-texto-secundario);
     font-size: 14px;
+    color: var(--branco);
 }
 
-/* Botão de tocar dentro dos cards */
+/* BOTÃO DE TOCAR */
 .botao-tocar {
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px;
+
     border: none;
     border-radius: 8px;
-    background-color: var(--cor-destaque);
-    color: var(--cor-fundo);
-    font-size: 14px;
+
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
+
+    font-family: inherit;
     font-weight: bold;
+
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
 
 .botao-tocar:hover {
-    background-color: var(--cor-destaque-hover);
+    background-color: var(--rosa-hover);
 }
 
-.botao-tocar:focus-visible {
-    outline: 2px solid var(--cor-detalhe);
-    outline-offset: 3px;
-}
-
-/* Player fixo na parte inferior */
+/* PLAYER DE MÚSICA */
 .player {
     position: fixed;
-    right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1001;
-    display: grid;
-    grid-template-columns: minmax(180px, 1fr) minmax(200px, 2fr) auto;
-    align-items: center;
-    gap: 25px;
+    width: 100%;
     min-height: 100px;
+    z-index: 1001;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    align-items: center;
+    gap: 20px;
+
     padding: 15px 25px;
-    border-top: 1px solid var(--cor-borda);
-    background-color: var(--cor-superficie);
-    box-shadow: 0 -5px 20px rgb(0 0 0 / 25%);
+
+    background-color: #35292b;
+    border-top: 1px solid var(--borda);
 }
 
-/* Informações da faixa atual */
+/* INFORMAÇÕES DA MÚSICA */
 .track-info {
     display: flex;
     align-items: center;
@@ -232,87 +221,61 @@ body {
 }
 
 #player-imagem {
-    width: 60px;
-    height: 60px;
-    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
     border-radius: 8px;
-    background-color: var(--cor-fundo);
     object-fit: cover;
 }
 
-.track-info strong {
+.track-info strong,
+#artist-name {
     display: block;
     overflow: hidden;
-    color: var(--cor-texto);
-    font-size: 15px;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #artist-name {
-    display: block;
     margin-top: 5px;
-    overflow: hidden;
-    color: var(--cor-texto-secundario);
     font-size: 13px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
-/* Barra de progresso */
+/* PROGRESSO DA MÚSICA */
 .progresso-container {
     display: flex;
     align-items: center;
     gap: 10px;
-    min-width: 0;
-}
-
-#tempo-atual,
-#duracao-total {
-    flex-shrink: 0;
-    color: var(--cor-texto-secundario);
-    font-size: 12px;
-    font-variant-numeric: tabular-nums;
 }
 
 #barra-progresso {
     width: 100%;
-    min-width: 0;
-    height: 6px;
-    border-radius: 10px;
-    background-color: var(--cor-borda);
-    accent-color: var(--cor-destaque);
+    accent-color: var(--rosa-claro);
     cursor: pointer;
 }
 
-/* Controles do player */
+/* CONTROLES */
 .player-controles {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
 }
 
 #play-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
+
     border: none;
     border-radius: 50%;
-    background-color: var(--cor-destaque);
-    color: var(--cor-fundo);
+
+    background-color: var(--rosa-claro);
+    color: var(--marrom);
+
     font-size: 20px;
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
 }
 
 #play-button:hover {
-    transform: scale(1.06);
-    background-color: var(--cor-destaque-hover);
+    background-color: var(--rosa-hover);
 }
 
 #play-button:focus-visible {
@@ -325,67 +288,51 @@ body {
     display: none;
 }
 
-/* Ajustes para telas médias */
+/* TABLETS E TELAS MENORES */
 @media (max-width: 900px) {
     .layout {
-        grid-template-columns: 170px minmax(0, 1fr);
-        gap: 18px;
-        padding: 18px;
+        margin-left: 210px;
     }
 
     .menu {
-        padding: 15px;
-    }
-
-    .catalogo {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 15px;
+        width: 180px;
     }
 
     .player {
-        grid-template-columns: minmax(150px, 1fr) minmax(160px, 1.5fr) auto;
-        gap: 15px;
-        padding: 12px 18px;
-    }
-
-    #player-imagem {
-        width: 50px;
-        height: 50px;
+        gap: 10px;
     }
 }
 
-/* Ajustes para celulares */
+/* CELULARES */
 @media (max-width: 600px) {
     body {
-        padding-bottom: 125px;
+        padding-top: 70px;
+        padding-bottom: 120px;
     }
 
     .topo {
-        padding: 12px 16px;
+        height: 70px;
+        padding: 8px 15px;
     }
 
     .marca {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .marca img {
-        width: 36px;
-        height: 36px;
+        width: 45px;
+        height: 45px;
     }
 
     .layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
-        padding: 16px;
+        margin-left: 0;
+        padding: 15px;
     }
 
     .menu {
         position: static;
-        padding: 15px;
-    }
-
-    .menu h2 {
-        margin-bottom: 12px;
+        width: 100%;
+        margin-bottom: 20px;
     }
 
     .menu nav {
@@ -396,18 +343,34 @@ body {
 
     .botao-categoria {
         width: auto;
-        padding: 9px 12px;
-        font-size: 13px;
-    }
-
-    .conteudo h1 {
-        margin-bottom: 18px;
-        font-size: 23px;
     }
 
     .catalogo {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+    }
+
+    .player {
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .track-info {
+        gap: 8px;
+    }
+
+    #player-imagem {
+        width: 42px;
+        height: 42px;
+    }
+
+    .player-controles {
+        grid-column: 2;
+    }
+
+    .progresso-container {
+        grid-column: 1 / 3;
     }
 
     .card {
