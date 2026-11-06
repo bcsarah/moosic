@@ -1,4 +1,3 @@
-
 /* CORES DO SITE */
 :root {
     --fundo: #292425;
@@ -11,7 +10,6 @@
     --borda: #594346;
 }
 
-/* CONFIGURAÇÕES GERAIS */
 * {
     box-sizing: border-box;
 }
