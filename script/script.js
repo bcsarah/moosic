@@ -12,6 +12,9 @@ const playerArtista = document.querySelector("#artist-name");
 const playerAudio = document.querySelector("#audio");
 const playButton = document.querySelector("#play-button");
 
+const botaoImportar = document.querySelector("#botao-importar");
+const inputMusicas = document.querySelector("#input-musicas");
+
 const nomesCategorias = {
     todas: "Todas as músicas",
     rock: "Rock",
@@ -22,7 +25,7 @@ const nomesCategorias = {
 };
 
 // Cria os elementos de cada card usando os atributos data-*.
-cards.forEach((card) => {
+catalogo.querySelectorAll(".card").forEach((card) => {
     const imagem = document.createElement("img");
     imagem.src = card.dataset.imagem;
     imagem.alt = `Capa do álbum ${card.dataset.album}`;
@@ -145,4 +148,54 @@ playerAudio.addEventListener("timeupdate", () => {
 
 barraProgresso.addEventListener("input", () => {
     playerAudio.currentTime = Number(barraProgresso.value);
+});
+
+// Abre o seletor de arquivos.
+botaoImportar.addEventListener("click", () => {
+    inputMusicas.click();
+});
+
+// Importa as músicas selecionadas.
+inputMusicas.addEventListener("change", (evento) => {
+    const arquivos = Array.from(evento.target.files);
+
+    arquivos.forEach((arquivo) => {
+        if (!arquivo.type.startsWith("audio/")) return;
+
+        const titulo = arquivo.name.replace(/\.[^/.]+$/, "");
+
+        const card = document.createElement("article");
+
+        card.classList.add("card");
+
+        card.dataset.categoria = "indie";
+        card.dataset.titulo = titulo;
+        card.dataset.artista = "Arquivo local";
+        card.dataset.album = "Importadas";
+        card.dataset.imagem = "images/moosic.png";
+        card.dataset.audio = URL.createObjectURL(arquivo);
+
+        // Cria os elementos do card.
+        const imagem = document.createElement("img");
+        imagem.src = card.dataset.imagem;
+        imagem.alt = "Capa da música";
+
+        const nome = document.createElement("h2");
+        nome.textContent = titulo;
+
+        const artista = document.createElement("p");
+        artista.textContent = card.dataset.artista;
+
+        const botao = document.createElement("button");
+        botao.classList.add("botao-tocar");
+        botao.textContent = "Tocar";
+        botao.type = "button";
+
+        card.append(imagem, nome, artista, botao);
+
+        catalogo.appendChild(card);
+    });
+
+    // Permite selecionar o mesmo arquivo novamente.
+    inputMusicas.value = "";
 });
